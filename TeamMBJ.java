@@ -75,7 +75,7 @@ public class TeamMBJ extends Robot
 			else { // If the bot is in position, start the normal routine
 				
 				if (aimAndFire) {
-				//	targeting();
+					
 				}
 				else if (circlePatrol) {
 					System.out.print("()"); // Print out the name of the bot
@@ -324,6 +324,15 @@ public class TeamMBJ extends Robot
 					System.out.println("Warning! Facing away from enemy! Enemy to right");
 					turnGunRight(180);
 				}
+			}
+			else{
+					if (getY() > middleBorder && Math.cos(Math.toRadians(getGunHeading())) > 0){ // cos(0) = 1
+					System.out.println("Warning! Facing away from enemy! Enemy above");
+					turnGunRight(180);
+				} else if (getY() < middleBorder && Math.cos(Math.toRadians(getGunHeading())) < 0){ // cos(180) = -1
+					System.out.println("Warning! Facing away from enemy! Enemy below");
+					turnGunRight(180);
+					}
 			}
 			
 		// Horisontal
