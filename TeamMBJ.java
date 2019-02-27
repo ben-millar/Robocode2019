@@ -405,13 +405,12 @@ public class TeamMBJ extends Robot
 					turnGunLeft(getGunBearing() - 270);
 					System.out.println("\nTurning1"); // Print out the name of the bot
 				}
-			} else {
+			}/* else {
 				if (Math.round(getGunHeading()) != 90) {
 					turnGunLeft(getGunBearing() - 90);
 					System.out.println("\nTurning2"); // Print out the name of the bot
 				}
-			}
-
+			}*/ // This code seems to be making the robot face out to the right when it's on the right hand side
 		} else {
 			if (Math.round(getHeading()) == 90) {
 				if (getX() < maxBorder) {
