@@ -327,14 +327,21 @@ public class TeamMBJ extends Robot
 			}
 			else{
 					if (getY() > middleBorder && Math.cos(Math.toRadians(getGunHeading())) > 0){ // cos(0) = 1
-					System.out.println("Warning! Facing away from enemy! Enemy above");
+					System.out.println("Warning! Facing away from enemy! Enemy below");
 					turnGunRight(180);
 				} else if (getY() < middleBorder && Math.cos(Math.toRadians(getGunHeading())) < 0){ // cos(180) = -1
-					System.out.println("Warning! Facing away from enemy! Enemy below");
+					System.out.println("Warning! Facing away from enemy! Enemy above");
 					turnGunRight(180);
 					}
 			}
 			
+		// if enemy right in center, just vertical patrol
+		if (enemyPosition.x > middleBorder-10 && enemyPosition.y < middleBorder+10){
+			if (enemyPosition.y > middleBorder-10 && enemyPosition.y < middleBorder+10){
+				verticalPatrol = true;
+				return true;
+			}
+		}
 		// Horisontal
 		if (getX() < middleBorder && enemyPosition.x > middleBorder) {
 			verticalPatrol = true;
@@ -346,7 +353,7 @@ public class TeamMBJ extends Robot
 		}
 		
 		// Vertical
-		if (getY() < middleBorder && enemyPosition.y > middleBorder) {
+		if (getY() < middleBorder && enemyPosition.y >= middleBorder) {
 			verticalPatrol = false;
 			return true;
 		}
